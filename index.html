@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yans Knisner - Portfolio</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: #E2F1E7;
+            color: #243642;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        header, footer {
+            background-color: #243642;
+            color: #E2F1E7;
+            padding: 20px 0;
+            text-align: center;
+        }
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+        .blurb {
+            background-color: #387478;
+            color: #E2F1E7;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .blurb:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        .fade-in {
+            animation: fadeIn 1s ease-in;
+        }
+        @keyframes slideIn {
+            from { transform: translateX(-100%); }
+            to { transform: translateX(0); }
+        }
+        .slide-in {
+            animation: slideIn 1s ease-out;
+        }
+    </style>
+</head>
+<body>
+    <header class="fade-in">
+        <h1>Yans Knisner</h1>
+        <p>Aspiring Software Developer | FPGA Enthusiast</p>
+    </header>
+
+    <div class="container">
+        <div class="blurb slide-in">
+            <p>Yans Knisner is a driven Computer Systems Engineering student at Lund University, Sweden, with a passion for FPGA design and VHDL development. His innovative projects showcase a deep understanding of hardware-software integration.</p>
+        </div>
+        <div class="blurb slide-in">
+            <p>Specializing in FPGA programming and digital system design, Yans has developed several cutting-edge projects that demonstrate his proficiency in VHDL and system architecture.</p>
+        </div>
+        <div class="blurb slide-in">
+            <p>With a keen interest in embedded systems, Yans has successfully implemented complex algorithms on FPGAs, optimizing performance and reducing power consumption.</p>
+        </div>
+        <div class="blurb slide-in">
+            <p>Yans' portfolio includes a diverse range of projects, from a real-time image processing system on FPGA to a custom CPU design using VHDL, showcasing his versatility and technical expertise.</p>
+        </div>
+        <div class="blurb slide-in">
+            <p>As an aspiring software developer with a strong hardware background, Yans brings a unique perspective to solving complex engineering challenges.</p>
+        </div>
+        <div class="blurb slide-in">
+            <p>Through his academic projects and personal endeavors, Yans has honed his skills in version control, documentation, and collaborative development – essential traits for today's software engineering landscape.</p>
+        </div>
+    </div>
+
+    <footer class="fade-in">
+        <p>Contact: yans.knisner@example.com | +46 70 123 4567</p>
+        <p>Lund, Sweden</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', (event) => {
+            const blurbs = document.querySelectorAll('.blurb');
+            blurbs.forEach((blurb, index) => {
+                blurb.style.animationDelay = `${index * 0.2}s`;
+            });
+        });
+    </script>
+</body>
+</html>
