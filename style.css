@@ -1,0 +1,327 @@
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css");
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=League+Spartan:wght@100..900&family=Syne:wght@700&display=swap');
+
+html, body {
+    height: 100%;
+    margin: 0;
+    overflow: hidden;
+    font-family: 'League Spartan';
+}
+
+.titleCard {
+    font-size: 20vh;
+    font-family: Syne;
+}
+
+#name-logo {
+    position: fixed;
+    top: 2%;
+    color: white;
+    left: 2%;
+    font-size: 1vw;
+    opacity: 0;
+    transition: opacity 0s ease-in-out;
+    cursor: default;
+    z-index: 100;
+    text-decoration: underline;
+}
+
+#name-logo.visible {
+    opacity: 1;
+    transition: opacity 0.5s ease-in-out;
+}
+
+#typed-text {
+    width: 20vw;
+}
+
+/* ################################################################### */
+
+.container-snap {
+    height: 100vh;
+    overflow-y: scroll;
+    scroll-snap-type: y mandatory;
+    position: relative;
+}
+
+section {
+    height: 100vh;
+    scroll-snap-align: start;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+}
+
+#section1 {
+    background-image: 
+        linear-gradient(to bottom, 
+            rgba(188,151,109, 0) 0%,
+            rgba(188,151,109, 0) 50%,
+            rgba(188,151,109, 1) 100%),
+        url('backgrounds/armenia.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-blend-mode: none;
+}
+
+#section2, #section3, #section4, #section5 {
+    background-color: rgba(188,151,109);
+    background-blend-mode: screen;
+    background-image: url("backgrounds/1.jpg");
+}
+
+#section6 {
+    background-color: rgba(188,151,109);
+    background-blend-mode: screen;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-image: url("backgrounds/2.png");
+}
+
+#navbar {
+    position: fixed;
+    right: 4%;
+    top: 40%;
+    z-index: 1000;
+}
+
+.nav-item-container {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    margin: 20px 0;
+}
+
+.nav-item {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    cursor: pointer;
+    position: relative;
+    transition: transform 0.3s ease-in-out;
+    border: 3px solid rgb(117, 94, 68);
+}
+
+.nav-item:hover {
+    transform: scale(1.2);
+}
+
+.small-circles {
+    display: flex;
+    margin-right: 10px;
+}
+
+.small-circle {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    margin-right: 5px;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+    cursor: default;
+    border: 3px solid rgb(117, 94, 68);
+}
+
+.item-2 {
+    background-color: rgba(188,151,109);
+}
+
+.small-circle.fade-in {
+    opacity: 1;
+    cursor: pointer;
+}
+/* ################################################################### */
+
+.underscore {
+    display: inline-block;
+    animation: fade 1s ease-in-out infinite;
+}
+@keyframes fade {
+    0%, 100% { opacity: 0; }
+    50% { opacity: 1; }
+}
+
+/* ################################################################### */
+
+svg {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+.where {
+    position: absolute;
+    top: 2%;
+    left: 2%;
+    z-index: 1000;
+}
+
+.btn-group {
+    position: fixed;
+    top: 2%;
+    right: 2%;
+}
+
+.title-area {
+    text-align: left;
+    margin-left: 10%;
+    margin-top: 3%;
+    width: 60%;
+}
+
+h1 {
+    font-family: Syne;
+}
+
+.title-area h1 {
+    font-size: 11vmin;
+}
+
+@media (max-width: 1500px) {
+    .title-area h1 {
+        font-size: 6vmin;
+    }
+
+    .title-area h3 {
+        font-size: 3vmin;
+    }
+}
+
+.subtitle {
+    margin-top: 4%;
+}
+
+.projects-list {
+    width: 100%;
+    padding-top: 5%;
+    padding-right: 15%;
+}
+
+.card {
+    background-color: transparent;
+}
+
+.list-group-item {
+    background-color: transparent;
+    color: white;
+    padding-top: 3vh;
+    padding-bottom: 3vh;
+}
+
+.card-header {
+    font-family: Syne;
+}
+
+.project-link {
+    text-decoration: none;
+    background-color: inherit; 
+    transition: background-color 0.3s ease-in-out;
+    outline: none;
+    font-size: 1vw;
+}
+
+.project-link:hover {
+    background-color: #b6926a;
+    cursor: pointer;
+}
+
+.project-name {
+    font-family: Syne;
+}
+
+.title-image {
+    position: absolute;
+    width: 40%;
+    height: 70%;
+    top: 120%;
+    object-fit: cover;
+    opacity: 0;
+    z-index: 1;
+    border-radius: 10%;
+    transition: opacity 0.5s ease-in-out;
+}
+
+@media (max-width: 768px) {
+    .title-image {
+        width: 80%;
+        height: 30%;
+        top: 110%;
+    }
+}
+
+.project-blurb {
+    line-height: 2;
+    padding-left: 4vw;
+    padding-right: 4vw;
+}
+
+.project-blurb p, li {
+    font-size: 0.9vmax;
+}
+
+.carousel {
+    margin-right: 15%;
+}
+
+.showcaseImage {
+    width: 100%;
+    padding-right: 15%;
+}
+
+.logo-links {
+    position: fixed;
+    top: 2%;
+    right: 2%;
+    display: flex;
+    gap: 1vw;
+    font-size: 29pt;
+    z-index: 1000;
+    overflow: visible;
+}
+
+.logo-links a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    padding: 5px;
+}
+
+.logo-links img {
+    width: 40px;
+    object-fit: contain;
+}
+
+.logo-links i {
+    font-size: 30pt;
+    margin-top: 13px;
+    color: white
+}
+
+figure {
+    width: 100%;
+}
+
+.figure-caption {
+    font-size: 15pt;
+    color: white;
+    margin-top: 20px;
+}
+
+.icon-dec {
+    float: right;
+}
+
+.carousel-caption {
+    background: rgba(0, 0, 0, 0.35);
+    padding-right: 2%;
+    padding-left: 2%;
+}
+
+.tooltip-inner {
+    background-color: white;
+    color: black;
+}
