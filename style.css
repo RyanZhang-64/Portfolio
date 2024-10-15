@@ -102,7 +102,7 @@ section {
     cursor: pointer;
     position: relative;
     transition: transform 0.3s ease-in-out;
-    border: 3px solid rgb(117, 94, 68);
+    border: 3px solid white;
 }
 
 .nav-item:hover {
@@ -122,7 +122,7 @@ section {
     opacity: 0;
     transition: opacity 0.3s ease-in-out;
     cursor: default;
-    border: 3px solid rgb(117, 94, 68);
+    border: 3px solid white;
 }
 
 .item-2 {
