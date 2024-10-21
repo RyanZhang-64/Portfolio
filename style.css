@@ -183,11 +183,11 @@ h1 {
 
 @media (max-width: 1500px) {
     .title-area h1 {
-        font-size: 10vmin;
+        font-size: 10vh;
     }
 
     .title-area h3 {
-        font-size: 5vmin;
+        font-size: 5vh;
     }
 }
 
