@@ -224,4 +224,22 @@ document.addEventListener('DOMContentLoaded', (event) => {
             el.style.opacity = '1';
         });
     });
+
+    var carousel = document.getElementById('carousel2');
+    var textBlock = document.getElementById('beneath-carousel');
+
+    carousel.addEventListener('slid.bs.carousel', function() {
+        var activeSlide = this.querySelector('.carousel-item.active');
+        var slideIndex = Array.from(activeSlide.parentNode.children).indexOf(activeSlide);
+
+        if (slideIndex === 2) { // Index 2 corresponds to the third slide (0-based index)
+            textBlock.style.opacity = '0';
+            textBlock.style.pointerEvents = 'none';
+            carousel.style.transform = 'translateY(20%)';
+        } else {
+            textBlock.style.opacity = '1';
+            textBlock.style.pointerEvents = 'auto';
+            carousel.style.transform = 'none';
+        }
+    });
 });

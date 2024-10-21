@@ -33,8 +33,8 @@
                 <div class="row">
                     <div class="col-14 col-md-6 px-7">
                         <div class="title-area">
-                            <h1>Projects +<br>Experience</h1><br>
-                            <h3 class="subtitle">Click on my projects to see what I learnt during development!</h3><br><br>
+                            <h1>Projects</h1><br>
+                            <h3 class="subtitle">Click on my projects to see what I learnt during development!</h3><br>
                             <h3>Visit <a href="https://github.com/RyanZhang-64" style="font-style: italic;">my Github</a> for codebases & technical documentation</h3>
                             <img src="demoVids/ProcessingCiv-1.gif" class="title-image" id="title-image">
                         </div>
@@ -86,10 +86,10 @@
         </section>
         <section id="section3">
             <div class="col-14 col-md-7 px-7 project-blurb">
-                <h1 style="font-size: 5vmax;">ProcessingCiv  <i class="bi bi-robot"></i></h1><br><hr><br>
+                <h1 style="font-size: 5vmax;">ProcessingCiv  <i class="bi bi-robot"></i></h1><hr>
                 <h3>Overview</h3>
                 <p>A simplified, in-progress, solo-developed port of Civilization 5 written fully in Processing Java, built as a playground for experiments with LLM-based CPU AIs.</p>
-                <br><hr><br>
+                <hr>
                 <h3>What I learnt</h3>
                 <p>This is the largest-scale project I worked on, with 5k+ lines written, and a wide scope ranging from terrain generation to local multiplayer.<br>
                     The development process has taken ~2 months to reach ~70% completion of my project brief, created at the start.<br>
@@ -198,14 +198,14 @@
         </section>
         <section id="section4">
             <div class="col-14 col-md-7 px-7 project-blurb">
-                <h1 style="font-size: 2vmax;">Hardest Challenges During Development <i class="bi bi-wrench icon-dec"></i></h1><br><hr><br>
-                <h3>Map Generation - <i>Creating a realistic distribution of biomes and river generation</i> <i class="bi bi-droplet-fill icon-dec"></i></h3><br>
+                <h1 style="font-size: 2vmax;">Hardest Challenges During Development <i class="bi bi-wrench icon-dec"></i></h1><hr>
+                <h3>Map Generation - <i>Creating a realistic distribution of biomes and river generation</i> <i class="bi bi-droplet-fill icon-dec"></i></h3>
                 <p>Using perlin noise for humidity, altitude and temperature noise maps, and adapting tree growth algorithms for pruning/merging rivers.</p>
-                <br><hr><br>
-                <h3>Local Multiplayer - <i>Which game states to pass?</i> <i class="bi bi-globe2 icon-dec"></i></h3><br>
-                <p>Use delta compression, game states that affect other players immediately (e.g. coming within range/attacking enemy unit) are transmitted to the player via host. Discrepancies are resolved each turn by host, residual data distributed.</p></p>
-                <br><hr><br>
-                <h3>Optimization - <i>Rendering large maps is laggy...</i> <i class="bi bi-wrench-adjustable icon-dec"></i></h3><br>
+                <hr>
+                <h3>Local Multiplayer - <i>Which game states to pass?</i> <i class="bi bi-globe2 icon-dec"></i></h3>
+                <p>Use delta compression, game states that affect other players immediately (e.g. coming within range/attacking enemy unit) are transmitted to the player via host. Discrepancies are resolved each turn by host, residual data distributed.</p>
+                <hr>
+                <h3>Optimization - <i>Rendering large maps is laggy...</i> <i class="bi bi-wrench-adjustable icon-dec"></i></h3>
                 <p>Compatibilizing program with the P2D OpenGL renderer to utilize GPU hardware acceleration, implementing culling and level-of-depth for rendering, and quadtrees for clicking.</p>
             </div>
             <div class="col-10 col-md-5 px-3">
@@ -217,10 +217,10 @@
         </section>
         <section id="section5">
             <div class="col-14 col-md-7 px-7 project-blurb">
-                <h1 style="font-size: 2vmax;">The LLM CPU  <i class="bi bi-robot"></i></h1><br><hr><br>
+                <h1 style="font-size: 2vmax;">The LLM CPU  <i class="bi bi-robot"></i></h1><hr>
                 <h3>Overview</h3>
                 <p>An LLM fed game states that performs analysis and considers real-world cases, outputting next-move decisions and long-term game plans. Inspired by the paper <i><a href="https://arxiv.org/html/2407.06813v1">Richelieu: Self-Evolving LLM-Based Agents for AI Diplomacy</a></i>.</p>
-                <br><hr><br>
+                <hr>
                 <h3>Architecture</h3>
                 <ol>
                     <li>Generic, important game states are translated into strictly-formatted text. An LLM agent tells us whether the current long-term plan is worth deviating or modifying based on updates to the previously-considered game state.</li>
@@ -229,69 +229,65 @@
                     <li>An LLM agent exists for each game system, with access to more specific game states for its focus area. These translate high-level instructions to low level, strictly formatted instructions. An LLM agent is used to assign tasks, based on priority and sequencing.</li>
                     <li>In hardcode, low-level instructions are checked for conflicts, and parsed and executed by the game.</li>
                 </ol>
-                </p><br><hr><br>
-                <h3>Current State</h3>
-                <p>Developed prototype for a military LLM agent. Made revisions in greater architecture to account for latency, context window saturation, semantic decay and coherence drift. Llama 70-B has been used during demos for its price, RAG performance and 128k context window.</p>
+                </p>
             </div>
             <div class="col-10 col-md-5 px-3">
-                <figure class="figure">
-                    <div id="carousel2" class="carousel slide">
-                        <div class="carousel-indicators">
-                            <button type="button" data-bs-target="#carousel2" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                            <button type="button" data-bs-target="#carousel2" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                            <button type="button" data-bs-target="#carousel2" data-bs-slide-to="2" aria-label="Slide 3"></button>
-                        </div>
-                        <div class="carousel-inner">
-                            <div class="carousel-item active">
-                                <img src="graphs/TrelloGraph.PNG" class="d-block w-100" alt="...">
-                                <div class="carousel-caption d-none d-md-block">
-                                    <h5>Trello Graph</h5>
-                                    <p>Trello was used to organise and schedule development milestones, and ensure basic features were implemented before complex ones.</p>
-                                </div>
-                            </div>
-                            <div class="carousel-item">
-                                <img src="graphs/AIGraph.PNG" class="d-block w-100" alt="...">
-                                <div class="carousel-caption d-none d-md-block">
-                                    <h5>Graph Depicting LLM-based AI Architecture</h5>
-                                    <p>Demonstrating the implementation of the multi-agent LLM in coming to a decision.</p>
-                                </div>
-                            </div>
-                            <div class="carousel-item">
-                                <img src="graphs/MovementGraph.PNG" class="d-block w-100" alt="..." style="height: 80vh; object-fit: contain;">
-                                <div class="carousel-caption d-none d-md-block">
-                                    <h5>Graph Depicting Decision Tree for the Multi-Move Function</h5>
-                                    <p>Used to decide whether to go through tracked, unfogged land using A* or track through a foggy area with greedy BFS.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <button class="carousel-control-prev" type="button" data-bs-target="#carousel2" data-bs-slide="prev">
-                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden">Previous</span>
-                        </button>
-                        <button class="carousel-control-next" type="button" data-bs-target="#carousel2" data-bs-slide="next">
-                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden">Next</span>
-                        </button>
+                <div id="carousel2" class="carousel slide">
+                    <div class="carousel-indicators">
+                        <button type="button" data-bs-target="#carousel2" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                        <button type="button" data-bs-target="#carousel2" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                        <button type="button" data-bs-target="#carousel2" data-bs-slide-to="2" aria-label="Slide 3"></button>
                     </div>
-                    <figcaption class="figure-caption">Gifs showing some examples of in-game controls</figcaption>
-                </figure>
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <img src="graphs/TrelloGraph.PNG" class="d-block w-100" alt="...">
+                            <div class="carousel-caption d-none d-md-block">
+                                <h5>Trello Graph</h5>
+                                <p>Trello was used to organise and schedule development milestones, and ensure basic features were implemented before complex ones.</p>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <img src="graphs/AIGraph.PNG" class="d-block w-100" alt="...">
+                            <div class="carousel-caption d-none d-md-block">
+                                <h5>Graph Depicting LLM-based AI Architecture</h5>
+                                <p>Demonstrating the implementation of the multi-agent LLM in coming to a decision.</p>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <img src="graphs/MovementGraph.PNG" class="d-block w-100" alt="..." style="height: 80vh; object-fit: contain;">
+                            <div class="carousel-caption d-none d-md-block">
+                                <h5>Graph Depicting Decision Tree for the Multi-Move Function</h5>
+                                <p>Used to decide whether to go through tracked, unfogged land using A* or track through a foggy area with greedy BFS.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carousel2" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carousel2" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                </div><br><br>
+                <div class="project-blurb" id="beneath-carousel">
+                    <h3>Current State</h3>
+                    <p>Developed prototype for a military LLM agent. Made revisions in greater architecture to account for latency, context window saturation, semantic decay and coherence drift. Llama 70-B has been used during demos for its price, RAG performance and 128k context window.</p>
+                </div>
             </div>
         </section>
         <section id="section6">
             <div class="col-14 col-md-7 px-7 project-blurb">
-                <h1 style="font-size: 5vmax;">ryan-zhang.com  <i class="bi bi-display"></i></h1><br><hr><br>
+                <h1 style="font-size: 5vmax;">ryan-zhang.com  <i class="bi bi-display"></i></h1><hr>
                 <h3>Overview</h3>
                 <p>A portfolio website showing off my projects.</p>
-                <br><hr><br>
+                <hr>
                 <h3>What I learnt</h3>
                 <p>This project took 5 days to make, refreshed my knowledge on SVG animation, CSS and Cloudflare web hosting.<br>
                     Experimented with a minimalist-theme for the website, allowing more focus to be placed on the projects. <br>
                     What I found most difficult: Words drifting off the avatar, color coordination, web responsiveness.<br>
-                    <span style="float: right;">Like my website! -></span>
                 </p>
             </div>
-            <span style="position: absolute; right: 5%; top: 595%;" class="likebtn-wrapper" data-identifier="item_1"></span>
-            <script>(function(d,e,s){if(d.getElementById("likebtn_wjs"))return;a=d.createElement(e);m=d.getElementsByTagName(e)[0];a.async=1;a.id="likebtn_wjs";a.src=s;m.parentNode.insertBefore(a, m)})(document,"script","//w.likebtn.com/js/w/widget.js");</script>
         </section>
     </div>
 
@@ -309,7 +305,7 @@
                 <div data-bs-toggle="tooltip" data-bs-placement="top" title="Maze Algorithms" class="small-circle item-2"></div>
                 <div data-bs-toggle="tooltip" data-bs-placement="top" title="ryan-zhang.com" class="small-circle item-2"></div>
             </div>
-            <div class="nav-item" data-bs-toggle="tooltip" data-bs-placement="top" title="Projects + Experience" style="background-color: rgba(188,151,109);" data-target="section2">
+            <div class="nav-item" data-bs-toggle="tooltip" data-bs-placement="top" title="Projects" style="background-color: rgba(188,151,109);" data-target="section2">
                 <span class="tooltip">Section 2</span>
             </div>
         </div>

@@ -59,7 +59,7 @@ section {
         linear-gradient(to bottom, 
             rgba(188,151,109, 0) 0%,
             rgba(188,151,109, 0) 50%,
-            rgba(188,151,109, 1) 100%),
+            rgba(0,0,0, 1) 100%),
         url('backgrounds/armenia.jpg');
     background-size: cover;
     background-position: center;
@@ -69,13 +69,15 @@ section {
 
 #section2, #section3, #section4, #section5 {
     background-color: rgba(188,151,109);
-    background-blend-mode: screen;
+    background-blend-mode: multiply;
+    background-repeat: no-repeat;
+    background-size: cover;
     background-image: url("backgrounds/1.jpg");
 }
 
 #section6 {
     background-color: rgba(188,151,109);
-    background-blend-mode: screen;
+    background-blend-mode: multiply;
     background-repeat: no-repeat;
     background-size: cover;
     background-image: url("backgrounds/2.png");
@@ -83,7 +85,7 @@ section {
 
 #navbar {
     position: fixed;
-    right: 4%;
+    right: 5%;
     top: 40%;
     z-index: 1000;
 }
@@ -122,7 +124,7 @@ section {
     opacity: 0;
     transition: opacity 0.3s ease-in-out;
     cursor: default;
-    border: 3px solid white;
+    border: 2px solid white;
 }
 
 .item-2 {
@@ -176,16 +178,16 @@ h1 {
 }
 
 .title-area h1 {
-    font-size: 11vmin;
+    font-size: 20vw;
 }
 
 @media (max-width: 1500px) {
     .title-area h1 {
-        font-size: 6vmin;
+        font-size: 10vmin;
     }
 
     .title-area h3 {
-        font-size: 3vmin;
+        font-size: 5vmin;
     }
 }
 
@@ -258,7 +260,7 @@ h1 {
 }
 
 .project-blurb p, li {
-    font-size: 0.9vmax;
+    font-size: 1vmax;
 }
 
 .carousel {
@@ -275,8 +277,7 @@ h1 {
     top: 2%;
     right: 2%;
     display: flex;
-    gap: 1vw;
-    font-size: 29pt;
+    gap: 0.5vw;
     z-index: 1000;
     overflow: visible;
 }
@@ -291,13 +292,13 @@ h1 {
 }
 
 .logo-links img {
-    width: 40px;
+    width: 2vw;
     object-fit: contain;
 }
 
 .logo-links i {
-    font-size: 30pt;
-    margin-top: 13px;
+    font-size: 2vw;
+    margin-top: 1vh;
     color: white
 }
 
