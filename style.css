@@ -38,6 +38,7 @@ html, body {
 
 /* ################################################################### */
 
+
 .container-snap {
     height: 100vh;
     overflow-y: scroll;
@@ -95,6 +96,7 @@ section {
     align-items: center;
     justify-content: flex-end;
     margin: 20px 0;
+    position: relative;
 }
 
 .nav-item {
@@ -103,37 +105,52 @@ section {
     border-radius: 50%;
     cursor: pointer;
     position: relative;
-    transition: transform 0.3s ease-in-out;
-    border: 3px solid white;
-}
-
-.nav-item:hover {
-    transform: scale(1.2);
-}
-
-.small-circles {
+    transition: all 0.3s ease-in-out;
+    border: 3px solid rgba(255,255,255,0.5);
+    margin-right: 0;
+    overflow: hidden;
     display: flex;
-    margin-right: 10px;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 12px;
 }
 
-.small-circle {
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    margin-right: 5px;
-    opacity: 0;
+.nav-item.expanded {
+    width: var(--expanded-width, 200px);
+    border-radius: 25px;
+}
+
+.nav-text, .nav-icon {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
     transition: opacity 0.3s ease-in-out;
-    cursor: default;
-    border: 2px solid white;
+    white-space: nowrap;
+    user-select: none;
 }
 
-.item-2 {
-    background-color: rgba(188,151,109);
+.nav-text {
+    opacity: 0;
+    color: white;
+    left: 10%;
 }
 
-.small-circle.fade-in {
+.nav-icon {
     opacity: 1;
-    cursor: pointer;
+    right: 10%;
+    width: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+
+.nav-text.visible {
+    opacity: 1;
+}
+
+.nav-icon.hidden {
+    opacity: 0;
 }
 /* ################################################################### */
 

@@ -4,16 +4,115 @@ document.querySelectorAll('.nav-item, .project-link').forEach(item => {
         const targetId = this.getAttribute('data-target');
         document.getElementById(targetId).scrollIntoView({ behavior: 'smooth' });
     });
+
 });
 
-// Select important elements
-const container = document.querySelector('.container-snap');
 const navItemContainers = document.querySelectorAll('.nav-item-container');
-const navItems = document.querySelectorAll('.nav-item');
 
-// Animation settings
-const animationDuration = 300; // in milliseconds
-const delayBetweenCircles = 100;
+navItemContainers.forEach(container => {
+    const navItem = container.querySelector('.nav-item');
+    const sectionTarget = container.dataset.target;
+    const iconName = container.dataset.icon || 'house-fill';
+    const title = navItem.getAttribute('title');
+    
+    // Create icon element
+    const iconElement = document.createElement('span');
+    iconElement.classList.add('nav-icon');
+    iconElement.innerHTML = `<i class="bi bi-${iconName}"></i>`;
+    navItem.appendChild(iconElement);
+    
+    // Create text element for the capsule
+    const textElement = document.createElement('span');
+    textElement.classList.add('nav-text');
+    textElement.textContent = title;
+    navItem.appendChild(textElement);
+    
+    // Create a hidden element for width calculation
+    const measureElement = document.createElement('span');
+    measureElement.style.visibility = 'hidden';
+    measureElement.style.position = 'absolute';
+    measureElement.style.padding = '5px';
+    measureElement.style.whiteSpace = 'nowrap';
+    measureElement.textContent = title;
+    document.body.appendChild(measureElement);
+    
+    // Calculate the required width for the expanded state
+    const textWidth = measureElement.offsetWidth;
+    const expandedWidth = textWidth + 10;
+    navItem.style.setProperty('--expanded-width', `${expandedWidth}px`);
+    
+    // Remove the measuring element
+    document.body.removeChild(measureElement);
+
+    let showTextTimeout;
+    let collapseTimeout;
+
+    navItem.addEventListener('mouseenter', () => {
+        clearTimeout(showTextTimeout);
+        clearTimeout(collapseTimeout);
+        
+        iconElement.classList.add('hidden');
+        textElement.classList.remove('visible');
+        
+        navItem.classList.add('expanded');
+        showTextTimeout = setTimeout(() => {
+            textElement.classList.add('visible');
+        }, 150);
+    });
+
+    navItem.addEventListener('mouseleave', () => {
+        clearTimeout(showTextTimeout);
+        clearTimeout(collapseTimeout);
+        
+        textElement.classList.remove('visible');
+        
+        collapseTimeout = setTimeout(() => {
+            navItem.classList.remove('expanded');
+            iconElement.classList.remove('hidden');
+        }, 150);
+    });
+});
+
+const observerOptions = {
+    // Trigger when section is 50% visible
+    threshold: 0.5,
+    
+    // Optional: Add root margin if needed
+    // rootMargin: '0px'
+};
+
+// Intersection Observer code remains the same as before, but update the handlers
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (sectionNavMap.has(entry.target)) {
+            const navData = sectionNavMap.get(entry.target);
+            const iconElement = navData.navItem.querySelector('.nav-icon');
+            
+            if (entry.isIntersecting) {
+                entry.target.setAttribute('data-active', '');
+                iconElement.classList.add('hidden');
+                navData.navItem.classList.add('expanded');
+                clearTimeout(navData.showTextTimeout);
+                navData.showTextTimeout = setTimeout(() => {
+                    navData.textElement.classList.add('visible');
+                }, 150);
+            } else {
+                entry.target.removeAttribute('data-active');
+                clearTimeout(navData.showTextTimeout);
+                clearTimeout(navData.collapseTimeout);
+                navData.textElement.classList.remove('visible');
+                navData.collapseTimeout = setTimeout(() => {
+                    navData.navItem.classList.remove('expanded');
+                    iconElement.classList.remove('hidden');
+                }, 150);
+            }
+        }
+    });
+}, observerOptions);
+
+// Handle scroll event (debounced)
+const logo = document.getElementById('name-logo');
+const windowHeight = window.innerHeight;
 
 // Debounce function to limit how often a function is called
 function debounce(func, wait) {
@@ -28,10 +127,6 @@ function debounce(func, wait) {
     };
 }
 
-// Handle scroll event (debounced)
-const logo = document.getElementById('name-logo');
-const windowHeight = window.innerHeight;
-
 const handleScroll = debounce(() => {
     const scrollPosition = container.scrollTop;
     
@@ -43,76 +138,24 @@ const handleScroll = debounce(() => {
 
     navItemContainers.forEach(container => {
         const navItem = container.querySelector('.nav-item');
-        const smallCircles = container.querySelectorAll('.small-circle');
         const targetId = container.getAttribute('data-target');
 
         if (targetId) {
+            console.log("logged");
             const targetSection = document.getElementById(targetId);
             if (targetSection) {
                 const sectionTop = targetSection.offsetTop;
                 // Check if the current section is in view
                 if (scrollPosition >= sectionTop && scrollPosition < sectionTop + windowHeight) {
+                    console.log("hello");
                     navItem.style.transform = 'scale(1.2)';
-                    triggerShowSmallCircles(smallCircles);
                 } else {
                     navItem.style.transform = 'scale(1)';
-                    triggerHideSmallCircles(smallCircles);
                 }
             }
         }
     });
 }, 50);
-
-// Add scroll event listener
-container.addEventListener('scroll', handleScroll);
-
-// Functions to show and hide small circles
-function triggerShowSmallCircles(circles) {
-    circles.forEach((circle, index) => {
-        clearTimeout(circle.hideTimeout);
-        circle.showTimeout = setTimeout(() => {
-            circle.classList.add('fade-in');
-        }, (circles.length - 1 - index) * delayBetweenCircles);
-    });
-}
-
-function triggerHideSmallCircles(circles) {
-    circles.forEach((circle, index) => {
-        clearTimeout(circle.showTimeout);
-        circle.hideTimeout = setTimeout(() => {
-            circle.classList.remove('fade-in');
-        }, index * delayBetweenCircles);
-    });
-}
-
-// Add hover and click effects for nav items and small circles
-navItemContainers.forEach(container => {
-    const navItem = container.querySelector('.nav-item');
-    const smallCircles = container.querySelectorAll('.small-circle');
-    let isHovering = false;
-
-    navItem.addEventListener('mouseenter', () => {
-        isHovering = true;
-        triggerShowSmallCircles(smallCircles);
-    });
-
-    container.addEventListener('mouseleave', () => {
-        isHovering = false;
-        setTimeout(() => {
-            if (!isHovering) {
-                triggerHideSmallCircles(smallCircles);
-            }
-        }, animationDuration);
-    });
-
-    smallCircles.forEach((circle, index) => {
-        circle.addEventListener('click', (event) => {
-            if (event.target.classList.contains('fade-in')) {
-                console.log(`Clicked small circle ${index + 1} for ${container.getAttribute('data-target')}`);
-            }
-        });
-    });
-});
 
 // Bubble animation setup
 const svg = document.getElementById('animation-container');
